@@ -1,0 +1,245 @@
+/* Liquid-glass theme: loads after style.css and restyles the shop */
+:root{--silk:#150b27;--ink:#f3ebff;--mist:rgba(255,255,255,.06);--line:rgba(255,255,255,.16);--muted:#b9a8d6}
+body{background:linear-gradient(160deg,#1b1030,#2a1450 55%,#14213d) fixed}
+.msg{color:#ff9cc4}
+
+/* drifting liquid blobs behind everything */
+.blobs{position:fixed;inset:0;overflow:hidden;z-index:-1;pointer-events:none}
+.blobs span{position:absolute;width:46vmax;height:46vmax;filter:blur(80px);opacity:.5;animation:morph 16s ease-in-out infinite alternate}
+.blobs span:nth-child(1){background:#b8205a;top:-14vmax;left:-10vmax}
+.blobs span:nth-child(2){background:#0e8a8a;right:-14vmax;top:30vh;animation-duration:21s}
+.blobs span:nth-child(3){background:#c99a2e;bottom:-20vmax;left:25vw;opacity:.32;animation-duration:25s}
+@keyframes morph{
+  0%{border-radius:60% 40% 55% 45%/50% 60% 40% 50%;transform:translate(0,0) rotate(0)}
+  50%{border-radius:40% 60% 45% 55%/60% 40% 60% 40%;transform:translate(6vw,-5vh) rotate(90deg)}
+  100%{border-radius:55% 45% 40% 60%/45% 55% 50% 50%;transform:translate(-5vw,6vh) rotate(180deg)}
+}
+
+/* glass surfaces */
+header{background:rgba(21,11,39,.55);backdrop-filter:blur(18px) saturate(1.6)}
+.brand{color:#f0d68a}
+.hero,.soft,.india,footer{background:transparent}
+.india{border-block:1px solid var(--line);background:rgba(255,255,255,.04)}
+footer{border-top:1px solid var(--line)}
+.card,.rev,dialog,.chip,input,textarea,select{
+  background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.04));
+  border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(18px) saturate(1.6);color:var(--ink)}
+.card,.rev{border-radius:24px;overflow:hidden;position:relative;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 18px 40px rgba(0,0,0,.35)}
+dialog{border-radius:28px;background:linear-gradient(135deg,rgba(60,35,100,.92),rgba(25,14,48,.95))}
+dialog::backdrop{background:rgba(10,5,22,.7);backdrop-filter:blur(6px)}
+dialog .x{color:var(--ink)}
+.chip{border-radius:30px;color:var(--ink)}
+.chip[aria-pressed="true"]{background:linear-gradient(135deg,#d6286c,#8f1747);color:#fff}
+input,textarea,select{border-radius:14px}
+select option{color:#150b27}
+.btn{color:#1b1030;border-radius:30px;box-shadow:0 6px 22px rgba(201,154,46,.35)}
+.btn.ghost{color:#ff9cc4;border-color:#ff9cc4;box-shadow:none}
+.swatch b{color:#150b27}
+.swatch em{background:rgba(21,11,39,.7);backdrop-filter:blur(8px)}
+
+/* liquid sheen sweeping across glass */
+.card::after,.rev::after{content:"";position:absolute;inset:-60%;pointer-events:none;
+  background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.2) 50%,transparent 58%);
+  transform:translateX(-70%);animation:sheen 8s ease-in-out infinite}
+@keyframes sheen{0%,55%{transform:translateX(-70%)}100%{transform:translateX(70%)}}
+
+/* hero: headline reveal, liquid owner photo, tilted video */
+.hero h1{background:linear-gradient(100deg,#fff 20%,#f0d68a 45%,#ff9cc4 60%,#fff 80%) 0 0/220% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:reveal 1.3s cubic-bezier(.2,.8,.2,1) both,shine 7s linear 1.3s infinite}
+@keyframes reveal{from{filter:blur(16px);opacity:0;letter-spacing:.1em;transform:translateY(18px)}}
+@keyframes shine{to{background-position:220% 0}}
+.owner{width:132px;height:132px;border:0;animation:blob 9s ease-in-out infinite;
+  box-shadow:0 0 0 4px rgba(201,154,46,.6),0 0 44px rgba(184,32,90,.55)}
+@keyframes blob{
+  0%,100%{border-radius:63% 37% 54% 46%/55% 48% 52% 45%}
+  50%{border-radius:38% 62% 46% 54%/48% 58% 42% 52%}
+}
+#introBox video{border-radius:28px;border:1px solid rgba(255,255,255,.28);
+  box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 60px rgba(184,32,90,.3);
+  transform:perspective(1000px) rotateY(-9deg);transition:transform .6s}
+#introBox video:hover{transform:perspective(1000px) rotateY(0)}
+.chips span{background:rgba(255,255,255,.06);backdrop-filter:blur(8px)}
+
+/* glass social pills */
+.soc{border:1px solid rgba(255,255,255,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.4);
+  background-image:linear-gradient(rgba(255,255,255,.2),rgba(255,255,255,0));transition:transform .3s,box-shadow .3s}
+.soc:hover{transform:translateY(-4px);box-shadow:0 10px 26px rgba(255,255,255,.18)}
+
+/* floating glass dock, like the reference */
+.wa{display:none}
+.dock{position:fixed;right:18px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;z-index:30}
+.dock a{width:58px;height:58px;display:grid;place-items:center;border-radius:20px;color:#fff;text-decoration:none;font-weight:700;font-size:17px;
+  background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.04));
+  border:1px solid rgba(255,255,255,.24);backdrop-filter:blur(14px) saturate(1.5);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 10px 24px rgba(0,0,0,.4);
+  transition:transform .35s cubic-bezier(.3,1.6,.5,1),box-shadow .35s;animation:dockIn .7s cubic-bezier(.2,.8,.2,1) both}
+.dock a:nth-child(2){animation-delay:.1s}.dock a:nth-child(3){animation-delay:.2s}
+.dock a:nth-child(4){animation-delay:.3s}.dock a:nth-child(5){animation-delay:.4s}
+.dock a:hover{transform:translateX(-8px) scale(1.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 0 28px rgba(201,154,46,.6)}
+@keyframes dockIn{from{opacity:0;transform:translateX(80px)}}
+
+/* 3D glass carousel */
+.stage{perspective:1400px;height:530px;position:relative;touch-action:pan-y;overflow:hidden}
+.stage:has(#grid>p){height:auto}
+.carousel3d{position:relative;height:100%}
+.carousel3d .card{position:absolute;left:50%;top:14px;width:270px;margin-left:-135px;
+  transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .6s}
+.carousel3d .card.on{box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 30px 60px rgba(0,0,0,.55),0 0 60px rgba(201,154,46,.3)}
+.car-nav{display:flex;justify-content:center;gap:16px;margin-top:6px}
+.car-nav button{width:54px;height:54px;border-radius:50%;font-size:30px;line-height:1;color:#fff;cursor:pointer;
+  background:linear-gradient(145deg,rgba(255,255,255,.2),rgba(255,255,255,.05));
+  border:1px solid rgba(255,255,255,.26);backdrop-filter:blur(12px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4);transition:transform .3s}
+.car-nav button:hover{transform:scale(1.12)}
+
+@media(max-width:760px){
+  .dock{top:auto;bottom:12px;right:50%;transform:translateX(50%);flex-direction:row;gap:10px}
+  .dock a{width:46px;height:46px;border-radius:15px;font-size:14px}
+  .carousel3d .card{width:230px;margin-left:-115px}
+  .stage{height:480px}
+  #introBox video{transform:none}
+}
+@media(prefers-reduced-motion:reduce){*,*::after{animation:none!important;transition:none!important}.hero h1{color:#fff}}
+
+/* ===== extra polish ===== */
+::selection{background:#c99a2e;color:#1b1030}
+html{scrollbar-color:#c99a2e #150b27;scrollbar-width:thin}
+.price{color:#f0d68a}
+.price s{color:#9d8cbb}
+
+/* scroll progress bar in the header (browsers that support it) */
+@supports (animation-timeline:scroll()){
+  header::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;transform-origin:left;z-index:2;
+    background:linear-gradient(90deg,#c99a2e,#ff9cc4,#14b8b8);animation:prog linear both;animation-timeline:scroll(root)}
+  @keyframes prog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+}
+
+/* nav underline */
+nav a{position:relative}
+nav a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;background:#f0d68a;transform:scaleX(0);transform-origin:left;transition:transform .3s}
+nav a:hover::after{transform:scaleX(1)}
+
+/* hero: slow rotating ring of zari */
+.hero{position:relative;overflow:hidden}
+.hero .wrap{position:relative}
+.hero::before{content:"";position:absolute;right:-200px;top:-200px;width:560px;height:560px;border-radius:50%;
+  border:2px dashed rgba(240,214,138,.35);box-shadow:0 0 0 46px rgba(240,214,138,.04),0 0 0 100px rgba(240,214,138,.03);
+  animation:spin2 70s linear infinite}
+@keyframes spin2{to{transform:rotate(360deg)}}
+
+/* ticker strip */
+.ticker{overflow:hidden;white-space:nowrap;background:rgba(255,255,255,.05);backdrop-filter:blur(10px);
+  border-block:1px solid var(--line);padding:12px 0;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:#f0d68a}
+.ticker div{display:inline-block;animation:tick 32s linear infinite}
+.ticker span{padding:0 22px}
+.ticker span::before{content:"✦";color:#ff9cc4;margin-right:22px}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* headings */
+h2::after{content:"";display:block;width:72px;height:3px;margin-top:10px;border-radius:3px;background:linear-gradient(90deg,#c99a2e,#ff9cc4)}
+.sub{margin-top:12px}
+
+/* spinning gradient border on the centre saree */
+@property --a{syntax:"<angle>";initial-value:0deg;inherits:false}
+.carousel3d .card.on::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:2px;pointer-events:none;
+  background:conic-gradient(from var(--a),#c99a2e,#ff9cc4,#14b8b8,#c99a2e);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);animation:ring 5s linear infinite}
+@keyframes ring{to{--a:360deg}}
+.swatch img{transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.card.on:hover .swatch img{transform:scale(1.07)}
+
+/* cursor spotlight on glass */
+.rev:hover,.steps li:hover,.card.on:hover{
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.22),transparent 65%),
+  linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.04))}
+.rev{transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.rev:hover{transform:translateY(-8px)}
+
+/* buttons: periodic shine */
+.btn{position:relative;overflow:hidden}
+.btn:not(.off):not(:disabled):not(.ghost)::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.6) 50%,transparent 70%);transform:translateX(-130%);animation:btnshine 4.5s 1.2s infinite}
+@keyframes btnshine{0%,60%{transform:translateX(-130%)}100%{transform:translateX(130%)}}
+
+/* delivery steps as glass tiles with glowing numbers */
+.steps li{border:1px solid rgba(255,255,255,.2);border-radius:24px;padding:68px 20px 22px;position:relative;
+  background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.03));backdrop-filter:blur(14px)}
+.steps li::before{position:absolute;top:16px;left:20px;width:42px;height:42px;display:grid;place-items:center;border-radius:50%;
+  font-size:22px;font-weight:700;color:#1b1030;background:linear-gradient(135deg,#f0d68a,#c99a2e);box-shadow:0 0 24px rgba(201,154,46,.65)}
+
+/* reviews: quote mark */
+.rev blockquote::before{content:"\201C";display:block;font-family:var(--serif);font-size:56px;line-height:.7;color:#c99a2e}
+
+/* scroll reveal (added by script.js only when motion is allowed) */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ===== categories, wishlist, offers, cart, reels, help ===== */
+.icons{display:flex;gap:10px}
+.icons button{font:inherit;font-weight:600;color:var(--ink);cursor:pointer;padding:7px 16px;border-radius:30px;
+  background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.24)}
+.icons b{display:inline-block;min-width:22px;padding:0 6px;border-radius:12px;background:#c99a2e;color:#1b1030;font-size:14px;text-align:center}
+.offerbar{background:linear-gradient(90deg,#b8205a,#c99a2e);color:#fff;text-align:center;padding:9px 16px;font-weight:600}
+
+.heart{position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:50%;z-index:3;cursor:pointer;font-size:20px;line-height:1;
+  color:#fff;background:rgba(21,11,39,.55);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(8px);transition:transform .25s}
+.heart:hover{transform:scale(1.15)}
+.heart.on{color:#ff5c8a;text-shadow:0 0 12px #ff5c8a}
+.heart.big{position:static;width:46px;height:46px;vertical-align:middle;margin-top:6px}
+
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px}
+.cat{position:relative;aspect-ratio:1;border-radius:24px;overflow:hidden;cursor:pointer;padding:0;text-align:left;color:#fff;
+  border:1px solid rgba(255,255,255,.22);background:var(--mist);box-shadow:0 14px 30px rgba(0,0,0,.35)}
+.cat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.cat:hover img{transform:scale(1.1)}
+.cat span{position:absolute;inset:auto 0 0;padding:34px 14px 12px;font-size:14px;background:linear-gradient(transparent,rgba(21,11,39,.88))}
+.cat b{display:block;font-family:var(--serif);font-size:23px}
+
+.offers{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.offer{position:relative;overflow:hidden;cursor:pointer;padding:0;text-align:left;color:var(--ink);border-radius:22px;
+  background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.22)}
+.offer img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+.pct{position:absolute;top:12px;left:12px;padding:3px 14px;border-radius:20px;font-weight:700;color:#fff;background:linear-gradient(135deg,#ff5c8a,#b8205a)}
+.ob{display:block;padding:12px 14px}.ob h3{font-family:var(--serif);font-size:22px}
+
+.reelrow{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px}
+.reel{flex:0 0 190px;aspect-ratio:9/16;position:relative;overflow:hidden;cursor:pointer;padding:0;scroll-snap-align:start;
+  background:#000;border:1px solid rgba(255,255,255,.25);border-radius:22px;color:#fff}
+.reel video{width:100%;height:100%;max-height:none;object-fit:cover}
+.reel .pl{position:absolute;inset:0;margin:auto;width:52px;height:52px;display:grid;place-items:center;border-radius:50%;
+  background:rgba(255,255,255,.22);backdrop-filter:blur(8px);font-size:20px}
+.reel b{position:absolute;inset:auto 0 0;padding:30px 12px 10px;text-align:left;font-size:14px;background:linear-gradient(transparent,rgba(0,0,0,.8))}
+
+#rldlg{max-width:100vw;width:100vw;height:100dvh;max-height:100dvh;padding:0;border-radius:0;background:#000;overflow:hidden}
+#rldlg .x{z-index:5;color:#fff;font-size:42px;right:14px;top:8px}
+.reelfeed{height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none}
+.rl{height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:grid;place-items:center;background:#000}
+.rl video{height:100%;width:min(100vw,56.25dvh);max-height:none;object-fit:cover;cursor:pointer}
+.ov{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(100vw,56.25dvh);display:flex;justify-content:space-between;
+  align-items:flex-end;padding:90px 16px 26px;pointer-events:none;background:linear-gradient(transparent,rgba(0,0,0,.78));color:#fff}
+.ov h3{font-family:var(--serif);font-size:28px;line-height:1.1}
+.act{display:flex;flex-direction:column;gap:12px;pointer-events:auto}
+.act .heart{position:static;width:48px;height:48px;font-size:22px;font-weight:700}
+
+dialog h2{margin-bottom:10px}
+.li{display:flex;gap:12px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--line);padding:12px 0}
+.li img{width:56px;height:70px;object-fit:cover;border-radius:10px}
+.li>div:first-of-type{flex:1;min-width:120px}
+.btn.sm{padding:6px 14px;font-size:14px}
+.qty{display:flex;align-items:center;gap:10px}
+.qty button{width:32px;height:32px;border-radius:50%;cursor:pointer;color:var(--ink);background:transparent;border:1px solid rgba(255,255,255,.35)}
+.tot{font-size:22px;font-weight:600;margin:14px 0;text-align:right}
+
+#help details{border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:14px 20px;margin-bottom:10px;
+  background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.03));backdrop-filter:blur(14px)}
+#help summary{cursor:pointer;font-weight:600}
+#help details[open] summary{color:#f0d68a}
+#help details p{margin-top:8px;color:var(--muted)}
+#help .btn{margin:14px 10px 0 0}
+
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:99;white-space:nowrap;pointer-events:none;
+  background:rgba(21,11,39,.92);color:#fff;border:1px solid rgba(255,255,255,.25);padding:10px 22px;border-radius:30px;animation:toast 1.8s both}
+@keyframes toast{0%{opacity:0;transform:translate(-50%,12px)}12%,80%{opacity:1;transform:translate(-50%,0)}100%{opacity:0}}
+@media(max-width:760px){nav{display:none}.icons button{padding:6px 12px}}

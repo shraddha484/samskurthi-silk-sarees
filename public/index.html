@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saree Shop</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Mukta:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="glass.css">
+</head>
+<body>
+<div class="blobs" aria-hidden="true"><span></span><span></span><span></span></div>
+<header>
+  <div class="nav">
+    <a class="brand" href="#top"><img id="logo" alt="" hidden><span id="brand">Saree Shop</span></a>
+    <nav><a href="#categories">Categories</a><a href="#shop">Shop</a><a href="#offers">Offers</a><a href="#reels">Reels</a><a href="#help">Help</a></nav>
+    <div class="icons"><button id="wBtn" aria-label="Wishlist">♥ <b id="wN">0</b></button><button id="cBtn" aria-label="Cart">Cart <b id="cN">0</b></button></div>
+  </div>
+  <div class="zari" aria-hidden="true"></div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <img id="ownerPhoto" class="owner" alt="Shop owner" hidden>
+        <p id="ownerName" class="by"></p>
+        <h1 id="tagline"></h1>
+        <p id="about" class="lead"></p>
+        <a class="btn" href="#shop">Shop sarees</a>
+        <div class="social" id="social"></div>
+      </div>
+      <div id="introBox"></div>
+    </div>
+  </section>
+
+  <div class="offerbar" id="offerBar" hidden></div>
+  <div class="ticker" aria-hidden="true"><div><span>Silk</span><span>Cotton</span><span>Handloom</span><span>Bridal</span><span>Delivered all over India</span><span>Order on this website</span><span>Silk</span><span>Cotton</span><span>Handloom</span><span>Bridal</span><span>Delivered all over India</span><span>Order on this website</span></div></div>
+
+  <section class="india">
+    <div class="wrap">
+      <h2>We deliver all over India</h2>
+      <p id="deliveryText"></p>
+      <div class="chips"><span>North India</span><span>South India</span><span>East India</span><span>West India</span><span>Central India</span><span>North-East India</span></div>
+    </div>
+  </section>
+
+  <section id="categories" hidden>
+    <div class="wrap"><h2>Shop by category</h2><p class="sub">Choose a type of saree.</p><div class="cats" id="cats"></div></div>
+  </section>
+
+  <section id="shop">
+    <div class="wrap">
+      <h2>Our sarees</h2>
+      <p class="sub">Tap a saree to see all photos, the material and a short video.</p>
+      <div class="filters" id="filters" role="group" aria-label="Filter by type"></div>
+      <div class="stage"><div class="carousel3d" id="grid"></div></div>
+      <div class="car-nav"><button id="prev" aria-label="Previous saree">‹</button><button id="next" aria-label="Next saree">›</button></div>
+    </div>
+  </section>
+
+  <section id="offers" hidden>
+    <div class="wrap"><h2>Offers</h2><p class="sub" id="offerSub"></p><div class="offers" id="offerGrid"></div></div>
+  </section>
+
+  <section class="soft" id="reels" hidden>
+    <div class="wrap"><h2>Watch our reels</h2><p class="sub">Short videos of our sarees. Tap one to watch and swipe up for the next.</p><div class="reelrow" id="reelRow"></div></div>
+  </section>
+
+  <section class="soft" id="delivery">
+    <div class="wrap">
+      <h2>How your order reaches you</h2>
+      <ol class="steps">
+        <li><strong>You order</strong>Choose a saree and buy it on this website.</li>
+        <li><strong>We confirm</strong>We call or message you on WhatsApp to confirm details.</li>
+        <li><strong>We pack and ship</strong>Your saree is checked, packed and sent by courier.</li>
+        <li><strong>It arrives</strong>Delivered to your door anywhere in India.</li>
+      </ol>
+      <div id="delVid"></div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="wrap">
+      <h2>Customer reviews</h2>
+      <div class="sumrow"><div id="revSum"></div><button class="btn" id="wr">Write a review</button></div>
+      <div class="reviews" id="revGrid"></div>
+    </div>
+  </section>
+
+  <section id="help">
+    <div class="wrap"><h2>Help</h2><div id="faq"></div>
+      <a class="btn" id="helpWa" target="_blank" rel="noopener" hidden>Ask on WhatsApp</a><a class="btn ghost" id="helpCall" hidden>Call us</a></div>
+  </section>
+
+  <section class="soft" id="contact">
+    <div class="wrap">
+      <h2>Talk to us</h2>
+      <p class="sub">Follow us, watch our videos, or message us directly.</p>
+      <div class="social big" id="social2"></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap" id="foot"></div></footer>
+<div class="dock" id="dock" role="group" aria-label="Social links"></div>
+<a class="wa" id="wa" href="#" target="_blank" rel="noopener" hidden>Chat on WhatsApp</a>
+
+<dialog id="cdlg"><button class="x" data-close aria-label="Close">×</button><h2>Your cart</h2><div id="cItems"></div><div class="tot" id="cTot"></div><button class="btn" id="checkout" hidden>Checkout</button></dialog>
+<dialog id="wdlg"><button class="x" data-close aria-label="Close">×</button><h2>Your wishlist</h2><div id="wItems"></div></dialog>
+<dialog id="rldlg"><button class="x" data-close aria-label="Close reels">×</button><div class="reelfeed" id="reelFeed"></div></dialog>
+<dialog id="dlg"><button class="x" data-close aria-label="Close">×</button><div id="dBody" class="detail"></div></dialog>
+<dialog id="odlg">
+  <button class="x" data-close aria-label="Close">×</button>
+  <form id="of">
+    <h2>Buy on this website</h2>
+    <p id="osum" class="sub"></p>
+    <label>Your name<input name="name" required autocomplete="name"></label>
+    <label>Phone number<input name="phone" type="tel" required inputmode="numeric" autocomplete="tel"></label>
+    <label>Full address<textarea name="address" rows="3" required></textarea></label>
+    <label>Pincode<input name="pincode" required inputmode="numeric" maxlength="6" pattern="\d{6}"></label>
+    <label>Quantity<input name="qty" type="number" min="1" max="10" value="1"></label>
+    <label>Note (optional)<input name="note" maxlength="200"></label>
+    <button class="btn" type="submit">Place order</button>
+    <p class="msg" id="oerr"></p>
+  </form>
+  <div id="odone" hidden></div>
+</dialog>
+<dialog id="rdlg">
+  <button class="x" data-close aria-label="Close">×</button>
+  <form id="rf">
+    <h2>Write a review</h2>
+    <label>Saree<select name="productId" id="rsel"></select></label>
+    <fieldset><legend>Your rating</legend><div class="stars"><input type="radio" name="rating" id="r5" value="5" required><label for="r5" title="5 stars">★</label><input type="radio" name="rating" id="r4" value="4"><label for="r4" title="4 stars">★</label><input type="radio" name="rating" id="r3" value="3"><label for="r3" title="3 stars">★</label><input type="radio" name="rating" id="r2" value="2"><label for="r2" title="2 stars">★</label><input type="radio" name="rating" id="r1" value="1"><label for="r1" title="1 star">★</label></div></fieldset>
+    <label>Your name<input name="name" required maxlength="60"></label>
+    <label>City<input name="city" maxlength="60"></label>
+    <label>Your review<textarea name="text" rows="4" required maxlength="600" placeholder="How is the fabric, colour and fit? Did it match the photos?"></textarea></label>
+    <label>Add a photo (optional)<input type="file" name="photo" accept="image/jpeg,image/png,image/webp"></label>
+    <label>Add a short video (optional)<input type="file" name="video" accept="video/mp4,video/webm"></label>
+    <button class="btn" type="submit">Submit review</button>
+    <p class="msg" id="rerr"></p>
+  </form>
+  <div id="rdone" hidden></div>
+</dialog>
+<script src="script.js"></script>
+</body>
+</html>

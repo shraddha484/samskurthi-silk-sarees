@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin – Manage shop</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Mukta:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="zari" aria-hidden="true"></div>
+<main class="admin">
+  <h1>Manage your shop</h1>
+  <p><a href="/">View shop</a></p>
+
+  <div class="panel" id="loginBox">
+    <form id="loginForm" style="grid-template-columns:1fr">
+      <label>Password<input type="password" id="pw" required autocomplete="current-password"></label>
+      <button class="btn" type="submit">Log in</button>
+      <p class="msg" id="loginErr"></p>
+    </form>
+  </div>
+
+  <div id="app" hidden>
+    <div class="tabs" id="tabs">
+      <button class="chip" data-tab="t-shop" aria-pressed="true">Shop details</button>
+      <button class="chip" data-tab="t-saree" aria-pressed="false">Sarees</button>
+      <button class="chip" data-tab="t-rev" aria-pressed="false">Reviews</button>
+      <button class="chip" data-tab="t-ord" aria-pressed="false">Orders</button>
+    </div>
+
+    <section class="tab" id="t-shop">
+      <div class="panel"><form id="fs">
+        <label>Shop name<input name="shopName" maxlength="150"></label>
+        <label>Owner name<input name="ownerName" maxlength="150"></label>
+        <label class="full">Headline on home page<input name="tagline" maxlength="150" placeholder="Handpicked sarees, delivered across India"></label>
+        <label class="full">About the owner and shop<textarea name="about" rows="3" maxlength="800"></textarea></label>
+        <label class="full">Delivery message<input name="deliveryText" maxlength="150"></label>
+        <label>WhatsApp number (with country code)<input name="whatsapp" placeholder="919876543210"></label>
+        <label>Instagram link<input name="instagram" placeholder="https://instagram.com/yourshop"></label>
+        <label>Facebook link<input name="facebook" placeholder="https://facebook.com/yourshop"></label>
+        <label>YouTube link<input name="youtube" placeholder="https://youtube.com/@yourshop"></label>
+        <label>Google business link<input name="google" placeholder="https://g.page/yourshop"></label>
+        <label class="full">Offer banner text <span class="hint">shown at the top of the shop; leave empty for none</span><input name="offerText" maxlength="150" placeholder="Festival offer: special prices on silk sarees"></label>
+        <label class="full">Help / FAQ <span class="hint">one per line as: Question | Answer. Leave empty to use the default</span><textarea name="faq" rows="5" maxlength="2500"></textarea></label>
+        <label>Logo<input type="file" name="logo" accept="image/*"></label>
+        <label>Owner photo<input type="file" name="ownerPhoto" accept="image/*"></label>
+        <label>Intro video <span class="hint">MP4 or WebM, max 60 MB</span><input type="file" name="introVideo" accept="video/mp4,video/webm"></label>
+        <label>Delivery process video <span class="hint">optional</span><input type="file" name="deliveryVideo" accept="video/mp4,video/webm"></label>
+        <div class="full"><button class="btn" type="submit">Save shop details</button></div>
+        <p class="msg full" id="ms"></p>
+      </form></div>
+    </section>
+
+    <section class="tab" id="t-saree" hidden>
+      <div class="panel"><form id="fp">
+        <h2 class="full" id="pTitle" style="font-size:28px">Add a saree</h2>
+        <label class="full">Saree name<input name="name" required maxlength="80"></label>
+        <label>Type <span class="hint">pick or type a new one</span><input name="type" list="types" required placeholder="Silk, Cotton, Bridal..."></label>
+        <datalist id="types"></datalist>
+        <label>Material<input name="material" maxlength="80" placeholder="Pure silk, cotton..."></label>
+        <label>Price (₹)<input name="price" type="number" min="1" required></label>
+        <label>Old price (₹, optional)<input name="old" type="number" min="0"></label>
+        <label>Label (optional)<input name="tag" maxlength="20" placeholder="New, Bestseller"></label>
+        <label class="check"><input name="soldOut" type="checkbox"> Mark as sold out</label>
+        <label class="full">Description<textarea name="description" rows="2" maxlength="500"></textarea></label>
+        <label class="full">Photos <span class="hint">up to 5 (JPG, PNG, WebP)</span><input type="file" name="images" accept="image/jpeg,image/png,image/webp" multiple></label>
+        <label class="full">Short video <span class="hint">showing the saree and material, MP4 or WebM, max 60 MB</span><input type="file" name="video" accept="video/mp4,video/webm"></label>
+        <div class="full"><button class="btn" type="submit" id="pSave">Save saree</button>
+          <button class="btn" type="button" id="pCancel" hidden style="background:var(--line)">Cancel edit</button></div>
+        <p class="msg full" id="mp"></p>
+      </form></div>
+      <h2>Your sarees (<span id="pc">0</span>)</h2><div id="pl"></div>
+    </section>
+
+    <section class="tab" id="t-rev" hidden>
+      <h2>Customer reviews (<span id="rc">0</span>)</h2>
+      <p class="sub">Customers write reviews on the shop. A new review waits here until you approve it. Delete spam or abusive reviews.</p>
+      <div id="rl"></div>
+    </section>
+
+    <section class="tab" id="t-ord" hidden>
+      <h2>Website orders (<span id="oc">0</span>)</h2>
+      <p class="sub">Call or message the customer to confirm and collect payment. Delete an order once it is done.</p>
+      <div id="ol"></div>
+    </section>
+
+    <p style="margin-top:24px"><button class="btn" id="logout" style="background:var(--line)">Log out</button></p>
+  </div>
+</main>
+<script src="admin.js"></script>
+</body>
+</html>

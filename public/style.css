@@ -1,0 +1,127 @@
+:root{--ink:#2a1b2e;--silk:#fcf8fb;--rani:#b8205a;--peacock:#0e5a5a;--zari:#c99a2e;--mist:#f1e6ee;--line:#e3d3de;--muted:#6d5a70;
+--serif:"Cormorant Garamond",Georgia,serif;--sans:"Mukta",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--silk);line-height:1.6;font-size:17px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--zari);outline-offset:2px}
+[hidden]{display:none!important}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+section{padding:60px 0}
+.soft{background:var(--mist)}
+h2{font-family:var(--serif);font-size:clamp(30px,4vw,42px);font-weight:600;margin-bottom:6px}
+.sub{color:var(--muted);margin-bottom:24px}
+video{width:100%;max-height:70vh;background:#000;display:block}
+
+/* the one signature element: a woven zari border */
+.zari{height:14px;border-top:2px solid var(--zari);border-bottom:2px solid var(--zari);
+ background:repeating-linear-gradient(90deg,var(--zari) 0 10px,transparent 10px 14px,var(--rani) 14px 24px,transparent 24px 28px)}
+header{background:var(--silk);position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 20px;max-width:1100px;margin:auto}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:28px;font-weight:700;color:var(--rani);text-decoration:none}
+.brand img{height:42px;width:42px;object-fit:contain}
+nav{display:flex;gap:20px}nav a{text-decoration:none;font-weight:500}nav a:hover{color:var(--rani)}
+
+.btn{display:inline-block;background:var(--zari);color:var(--ink);padding:12px 24px;font:inherit;font-weight:600;text-decoration:none;border:0;border-radius:2px;cursor:pointer}
+.btn:hover{background:#dcad3f}
+.btn.ghost{background:transparent;border:2px solid var(--rani);color:var(--rani);padding:10px 22px}
+.btn.off,.btn:disabled{background:var(--line);color:var(--muted);cursor:not-allowed}
+
+.hero{background:var(--peacock);color:#fff;padding:56px 0}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+.hero-grid:has(#introBox:empty){grid-template-columns:1fr}
+.owner{width:110px;height:110px;border-radius:50%;object-fit:cover;border:4px solid var(--zari);margin-bottom:10px}
+.by{color:#bfe0e0;font-weight:500}
+.hero h1{font-family:var(--serif);font-size:clamp(38px,5.5vw,62px);line-height:1.05;font-weight:600;margin:4px 0 14px}
+.lead{max-width:48ch;color:#d8ecec;margin-bottom:22px}
+
+.social{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.soc{padding:8px 18px;border-radius:30px;text-decoration:none;font-weight:600;font-size:15px;color:#fff;background:#444}
+.soc.Instagram{background:#c13584}.soc.Facebook{background:#1877f2}.soc.YouTube{background:#d62020}.soc.WhatsApp{background:#1fa855}.soc.Google{background:#3b6fd4}
+.social.big .soc{padding:12px 26px;font-size:17px}
+
+.india{background:var(--ink);color:#f1e6ee;padding:40px 0}
+.india p{max-width:60ch;color:#cdbbd0}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.chips span{border:1px solid var(--zari);color:#f0d68a;padding:4px 16px;border-radius:30px;font-size:15px}
+
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+.chip{border:1.5px solid var(--line);background:#fff;padding:7px 18px;border-radius:30px;cursor:pointer;font:inherit}
+.chip[aria-pressed="true"]{background:var(--rani);border-color:var(--rani);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:24px}
+.card{background:#fff;border:1px solid var(--line);cursor:pointer;display:flex;flex-direction:column}
+.card:hover{border-color:var(--rani)}
+.swatch{aspect-ratio:4/5;position:relative;background:var(--mist);overflow:hidden}
+.swatch img{width:100%;height:100%;object-fit:cover;display:block}
+.swatch b,.swatch em{position:absolute;background:#fff;font-size:13px;padding:2px 10px;font-style:normal;font-weight:600}
+.swatch b{top:10px;left:10px}.swatch em{bottom:10px;right:10px;background:var(--ink);color:#fff}
+.card.sold img{filter:grayscale(.8);opacity:.7}
+.body{padding:14px 16px 18px}
+.card h3{font-family:var(--serif);font-size:23px;line-height:1.2}
+.fab{color:var(--muted);font-size:15px}
+.price{font-weight:600;font-size:20px;margin:6px 0}
+.price s{color:#9a8a9c;font-weight:400;font-size:15px;margin-left:8px}
+
+.steps{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:24px;margin:20px 0}
+.steps li{counter-increment:s;border-top:3px solid var(--zari);padding-top:12px}
+.steps li::before{content:counter(s);font-family:var(--serif);font-size:34px;color:var(--rani);display:block;line-height:1}
+.steps strong{display:block;font-family:var(--serif);font-size:23px}
+#delVid{max-width:560px}
+
+.reviews{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
+.rev{background:#fff;border:1px solid var(--line)}
+.rev img,.rev video{width:100%;aspect-ratio:4/5;object-fit:cover}
+.rev blockquote{padding:14px 16px 4px}.rev figcaption{padding:0 16px 16px;color:var(--muted);font-size:15px}
+
+footer{background:var(--ink);color:#d9c9dc;padding:26px 0;text-align:center;font-size:15px}
+.wa{position:fixed;right:18px;bottom:18px;background:#1fa855;color:#fff;padding:13px 20px;border-radius:40px;font-weight:600;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25);z-index:20}
+
+dialog{border:0;margin:auto;max-width:min(920px,94vw);width:100%;max-height:92vh;overflow:auto;padding:24px;background:var(--silk);position:relative}
+dialog::backdrop{background:rgba(42,27,46,.6)}
+dialog .x{position:absolute;right:10px;top:6px;background:none;border:0;font-size:34px;cursor:pointer;line-height:1}
+.detail{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.gal>img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.th{display:flex;gap:8px;margin-top:8px}.th img{width:56px;height:70px;object-fit:cover;cursor:pointer;border:1px solid var(--line)}
+.detail video{margin:12px 0}.detail .btn{margin:6px 8px 0 0}
+#odlg{max-width:520px}
+form{display:grid;gap:14px}
+label{font-weight:500;display:grid;gap:4px}
+input,textarea,select{font:inherit;padding:10px 12px;border:1.5px solid var(--line);background:#fff;width:100%}
+.msg{color:var(--rani);min-height:1.4em}
+
+/* admin */
+.admin{max-width:920px;margin:0 auto;padding:26px 20px 60px}
+.admin h1{font-family:var(--serif);font-size:38px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.panel{background:#fff;border:1px solid var(--line);padding:22px;margin:18px 0}
+.panel form{grid-template-columns:1fr 1fr}
+.full{grid-column:1/-1}
+.check{display:flex;align-items:center;gap:8px}.check input{width:auto}
+.row{display:flex;gap:14px;align-items:center;border-top:1px solid var(--line);padding:12px 0}
+.row img{width:56px;height:70px;object-fit:cover;flex:none}
+.row>div{flex:1}
+.row button{border:1.5px solid var(--line);background:#fff;padding:6px 14px;cursor:pointer;font:inherit}
+.row .del{color:var(--rani);border-color:var(--rani)}
+.hint{font-size:14px;color:var(--muted);font-weight:400}
+
+@media(max-width:760px){
+ .hero-grid,.detail{grid-template-columns:1fr}
+ nav{gap:12px;font-size:15px}.brand{font-size:23px}
+ .panel form{grid-template-columns:1fr}
+}
+
+/* reviews written by customers */
+.st{color:var(--zari);letter-spacing:2px}
+.rate{font-size:15px;color:var(--muted)}
+.sumrow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-bottom:24px}
+.big{font-family:var(--serif);font-size:44px;font-weight:700;line-height:1}
+.rb .st{padding:12px 16px 0}
+.rh{font-family:var(--serif);font-size:24px;margin:18px 0 8px}
+.detail .rev{margin-bottom:12px}.detail .rev img,.detail .rev video{aspect-ratio:auto;max-height:240px}
+#rdlg{max-width:520px}
+fieldset{border:0}legend{font-weight:500}
+.stars{display:flex;flex-direction:row-reverse;justify-content:flex-end}
+.stars input{position:absolute;opacity:0}
+.stars label{display:inline;font-size:38px;line-height:1;color:#cdbfd0;cursor:pointer;padding:0 2px}
+.stars input:checked~label,.stars label:hover,.stars label:hover~label{color:var(--zari)}
+.stars input:focus-visible+label{outline:3px solid var(--zari)}
